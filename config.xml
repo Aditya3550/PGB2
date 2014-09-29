@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<widget xmlns     = "http://www.w3.org/ns/widgets"
+        xmlns:gap = "http://phonegap.com/ns/1.0"
+        id        = "org.coenraets.employeedirectory"
+        versionCode="10"
+        version   = "1.1.0">
+
+  <!-- versionCode is optional and Android only -->
+
+  <name>Employee Directory</name>
+  <description>
+    Aditya Phone Gap Build Part 1 is the first mobile app developed by Aditya Bhushan Chaturvedi in Vibetech India A 17 First Floor Sector 4 Noida 201301.
+  </description>
+  <author email="aditya.chaturvedi@vibetechindia.com" href="http://vibetechindia.com/">
+    Vibetech India : Aditya Bhushan Chaturvedi
+  </author>
+  <feature name="http://api.phonegap.com/1.0/camera"/>
+  <feature name="http://api.phonegap.com/1.0/contacts"/>
+  <feature name="http://api.phonegap.com/1.0/file"/>
+  <feature name="http://api.phonegap.com/1.0/geolocation"/>
+  <feature name="http://api.phonegap.com/1.0/media"/>
+  <feature name="http://api.phonegap.com/1.0/network"/>
+  <feature name="http://api.phonegap.com/1.0/notification"/>
+
+  <!-- Define app splash screen for each platform. -->
+  <gap:splash src="number2l.jpg" />
+  <!-- Define app icon for each platform. -->
+  <icon src="number2.jpg" />
+</widget>
