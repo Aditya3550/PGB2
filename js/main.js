@@ -1,30 +1,24 @@
 var app = {
-    registerEvents: function () {
-        $(window).on('hashchange', $.proxy(this.route, this));
 
-        var self = this;
-        // Check of browser supports touch events...
-        if (document.documentElement.hasOwnProperty('ontouchstart')) {
-            // ... if yes: register touch event listener to change the "selected" state of the item
-
-            $('body').on('touchstart', 'a', function (event) {
-                $(event.target).addClass('tappable-active');
-            });
-            $('body').on('touchend', 'a', function (event) {
-                $(event.target).removeClass('tappable-active');
-            });
+    showAlert: function (message, title) {
+        if (navigator.notification) {
+            navigator.notification.alert(message, null, title, 'OK');
         } else {
-            // ... if not: register mouse events instead
-            $('body').on('mousedown', 'a', function (event) {
-                $(event.target).addClass('tappable-active');
-            });
-            $('body').on('mouseup', 'a', function (event) {
-                $(event.target).removeClass('tappable-active');
-            });
+            alert(title ? (title + ": " + message) : message);
         }
     },
 
-    route: function () {
+    registerEvents: function() {
+        $(window).on('hashchange', $.proxy(this.route, this));
+        $('body').on('mousedown', 'a', function(event) {
+            $(event.target).addClass('tappable-active');
+        });
+        $('body').on('mouseup', 'a', function(event) {
+            $(event.target).removeClass('tappable-active');
+        });
+    },
+
+    route: function() {
         var self = this;
         var hash = window.location.hash;
         if (!hash) {
@@ -38,21 +32,13 @@ var app = {
         }
         var match = hash.match(this.detailsURL);
         if (match) {
-            this.store.findById(Number(match[1]), function (employee) {
+            this.store.findById(Number(match[1]), function(employee) {
                 self.slidePage(new EmployeeView(employee).render());
             });
         }
     },
 
-    showAlert: function (message, title) {
-        if (navigator.notification) {
-            navigator.notification.alert(message, null, title, 'OK');
-        } else {
-            alert(title ? (title + ": " + message) : message);
-        }
-    },
-
-    slidePage: function (page) {
+    slidePage: function(page) {
 
         var currentPageDest,
             self = this;
@@ -81,7 +67,7 @@ var app = {
         $('body').append(page.el);
 
         // Wait until the new page has been added to the DOM...
-        setTimeout(function () {
+        setTimeout(function() {
             // Slide out the current page: If new page slides from the right -> slide current page to the left, and vice versa
             $(self.currentPage.el).attr('class', 'page transition ' + currentPageDest);
             // Slide in the new page
@@ -91,14 +77,15 @@ var app = {
 
     },
 
-    initialize: function () {
+    initialize: function() {
         var self = this;
         this.detailsURL = /^#employees\/(\d{1,})/;
         this.registerEvents();
-        this.store = new MemoryStore(function () {
+        this.store = new MemoryStore(function() {
             self.route();
         });
     }
+
 };
 
 app.initialize();
