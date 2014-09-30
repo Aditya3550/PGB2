@@ -14,16 +14,18 @@
   <author email="aditya.chaturvedi@vibetechindia.com" href="http://vibetechindia.com/">
     Vibetech India : Aditya Bhushan Chaturvedi
   </author>
-  <feature name="http://api.phonegap.com/1.0/camera"/>
   <feature name="http://api.phonegap.com/1.0/contacts"/>
-  <feature name="http://api.phonegap.com/1.0/file"/>
   <feature name="http://api.phonegap.com/1.0/geolocation"/>
+  <feature name="http://api.phonegap.com/1.0/notification"/>
+  <feature name="http://api.phonegap.com/1.0/device" />
+  <feature name="http://api.phonegap.com/1.0/camera"/>
+  <feature name="http://api.phonegap.com/1.0/file"/>
   <feature name="http://api.phonegap.com/1.0/media"/>
   <feature name="http://api.phonegap.com/1.0/network"/>
-  <feature name="http://api.phonegap.com/1.0/notification"/>
 
   <!-- Define app splash screen for each platform. -->
   <gap:splash src="number2l.jpg" />
+  <gap:plugin name="org.apache.cordova.camera" version="0.2.3" />
   <!-- Define app icon for each platform. -->
   <icon src="number2.jpg" />
 </widget>
